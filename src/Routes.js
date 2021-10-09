@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Adminhome from "./components/admin/adminhome";
 import Userhome from "./components/user/userhome";
+import Cpadmin from "./components/admin/Cpadmin";
+import Cpuser from "./components/user/Cpuser";
 import { Switch, Route } from "react-router-dom";
 
 import { Provider } from "react-redux";
@@ -30,6 +32,12 @@ function Routes() {
       </Route>
       <Route path="/userhome">
         <Userhome />
+      </Route>
+      <Route path="/cpadmin">
+        <Cpadmin />
+      </Route>
+      <Route path="/cpuser">
+        <Cpuser />
       </Route>
     </Switch>
   );

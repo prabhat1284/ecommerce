@@ -54,6 +54,9 @@ function UserNavbar() {
                 <Link to="/cart" className="nav-item nav-link">
                   Cart
                 </Link>
+                <Link to="/cpuser" className="nav-item nav-link">
+                  Change Password
+                </Link>
               </div>
               <Logoutbtn />
             </div>

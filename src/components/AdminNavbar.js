@@ -26,13 +26,19 @@ function AdminNavbar() {
             >
               <div className="navbar-nav mr-auto">
                 <Link to="/adminhome" className="nav-item nav-link active">
-                  User Home
+                  Admin Home
                 </Link>
                 <Link to="/addproduct" className="nav-item nav-link">
                   Add Product
                 </Link>
                 <Link to="/addcategory" className="nav-item nav-link">
                   Add Category
+                </Link>
+                <Link to="/adminsettings" className="nav-item nav-link">
+                  Settings
+                </Link>
+                <Link to="/cpadmin" className="nav-item nav-link">
+                  Change Password
                 </Link>
               </div>
               <Logoutbtn />
