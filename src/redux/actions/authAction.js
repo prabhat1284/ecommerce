@@ -30,7 +30,6 @@ export const login = (userEmail, userPassword) => (dispatch) => {
       localStorage.setItem("city", res.data.user.city);
       localStorage.setItem("gender", res.data.user.gender);
       localStorage.setItem("role", res.data.user.role);
-      localStorage.setItem("status", res.data.user.status);
       localStorage.setItem("info", res.data.user.info);
 
       if (res.data.user.role === "admin") {

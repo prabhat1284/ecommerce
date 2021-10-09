@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { login } from "../redux/actions/authAction";
 
 function Login() {
-  //const {isLoggedIn}=useSelector((state) => state.auth);
   const { isLoggedInAdmin } = useSelector((state) => state.auth);
   const { isLoggedInUser } = useSelector((state) => state.auth);
   const [enteredemail, setEnteredEmail] = useState("");
@@ -22,16 +21,12 @@ function Login() {
   const loginHandler = (event) => {
     event.preventDefault();
 
-    // const  userDetails= {
-    //     email: enteredemail,
-    //     password: enteredpassword,
-    // }
     const email = enteredemail;
     const password = enteredpassword;
     dispatch(login(email, password));
 
     if (isLoggedInAdmin) {
-      history.push("/contact");
+      history.push("/adminhome");
     } else if (isLoggedInUser) {
       history.push("/userhome");
       console.log("user login");

@@ -2,7 +2,7 @@ import React from "react";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Product from "./components/Product";
+import Product from "./components/products/product";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Adminhome from "./components/admin/adminhome";
