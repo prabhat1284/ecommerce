@@ -5,7 +5,12 @@ import Contact from "./components/Contact";
 import Product from "./components/Product";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Adminhome from "./components/admin/adminhome";
+import Userhome from "./components/user/userhome";
 import { Switch, Route } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function Routes() {
   return (
@@ -13,9 +18,19 @@ function Routes() {
       <Route path="/" exact component={Home} />
       <Route path="/about" exact component={About} />
       <Route path="/contact" exact component={Contact} />
-      <Route path="/login" exact component={Login} />
+      <Route path="/login">
+        <Provider store={store}>
+          <Login />
+        </Provider>
+      </Route>
       <Route path="/register" exact component={Register} />
       <Route path="/product" exact component={Product} />
+      <Route path="/adminhome">
+        <Adminhome />
+      </Route>
+      <Route path="/userhome">
+        <Userhome />
+      </Route>
     </Switch>
   );
 }

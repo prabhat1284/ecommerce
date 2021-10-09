@@ -1,0 +1,6 @@
+export const LOGIN_SUCCESS_ADMIN = "LOGIN_SUCCESS_ADMIN";
+export const LOGIN_SUCCESS_USER = "LOGIN_SUCCESS_USER";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT = "LOGOUT";
+export const LOADING = "LOADING";
+export const EMAIL_LOGIN_DATA = "EMAIL_LOGIN_DATA";

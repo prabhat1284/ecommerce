@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logoutbtn from "./Logoutbtn";
 
-function Menu() {
+function UserNavbar() {
   return (
-    <>
+    <React.Fragment>
       <header>
         {/* <!-- header inner --> */}
         <div className="header">
@@ -44,28 +45,23 @@ function Menu() {
               id="navbarCollapse"
             >
               <div className="navbar-nav mr-auto">
-                <Link to="" className="nav-item nav-link active">
-                  Home
+                <Link to="/userhome" className="nav-item nav-link active">
+                  UserHome
                 </Link>
-                <Link to="/about" className="nav-item nav-link">
-                  About
+                <Link to="/product" className="nav-item nav-link">
+                  Product
                 </Link>
-                <Link to="/contact" className="nav-item nav-link">
-                  Contact
-                </Link>
-                <Link to="/register" className="nav-item nav-link">
-                  Register
-                </Link>
-                <Link to="/login" className="nav-item nav-link">
-                  Login
+                <Link to="/cart" className="nav-item nav-link">
+                  Cart
                 </Link>
               </div>
+              <Logoutbtn />
             </div>
           </nav>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 
-export default Menu;
+export default UserNavbar;
