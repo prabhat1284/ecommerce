@@ -4,12 +4,12 @@ import Dynamicprod from "./Dynamicprod";
 function Product() {
   return (
     <div>
-      <div className="brand_color">
-        <div className="container">
+      <div className="contactus">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12">
-              <div className="titlepage">
-                <h2>PRODUCT</h2>
+            <div className="col-md-8 offset-md-2">
+              <div className="title">
+                <h2>Our Products</h2>
               </div>
             </div>
           </div>

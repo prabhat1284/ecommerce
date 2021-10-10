@@ -1,10 +1,11 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
+import Cartbtn from "../products/Cartbtn";
+import cart from "../products/Cartbtn";
 import axios from "axios";
-import Cartbtn from "./Cartbtn";
-import Cart from "../user/Cart";
 
-function Dynamicprod() {
+function Cart() {
+  console.log(cart);
+  console.log("this is the cart webpage");
   const [prodDetails, setprodDetails] = useState([]);
 
   useEffect(() => {
@@ -17,18 +18,21 @@ function Dynamicprod() {
   }, [setprodDetails]);
   return (
     <>
+      <div className="contactus">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-8 offset-md-2">
+              <div className="title">
+                <h2>Cart</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       {prodDetails.map((s) => (
         <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12">
           <div className="product-box">
-            <ul>
-              <li>{s.cname}</li>
-              <li>{s.pname}</li>
-              <li>Rs.{s.price}</li>
-              <li>
-                <img src="../../../public/prodimages/{{s.prodimg}}" />
-              </li>
-            </ul>
-            <Cartbtn ptitle={s.pname} price={s.price} />
+            <cart ptitle={s.pname} price={s.price} />
           </div>
         </div>
       ))}
@@ -36,4 +40,4 @@ function Dynamicprod() {
   );
 }
 
-export default Dynamicprod;
+export default Cart;

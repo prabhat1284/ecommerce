@@ -9,6 +9,8 @@ import Adminhome from "./components/admin/adminhome";
 import Userhome from "./components/user/userhome";
 import Cpadmin from "./components/admin/Cpadmin";
 import Cpuser from "./components/user/Cpuser";
+import Cart from "./components/user/Cart";
+import AddCategory from "./components/admin/addcategory";
 import { Switch, Route } from "react-router-dom";
 
 import { Provider } from "react-redux";
@@ -38,6 +40,12 @@ function Routes() {
       </Route>
       <Route path="/cpuser">
         <Cpuser />
+      </Route>
+      <Route path="/Cart">
+        <Cart />
+      </Route>
+      <Route path="/addCategory">
+        <AddCategory />
       </Route>
     </Switch>
   );

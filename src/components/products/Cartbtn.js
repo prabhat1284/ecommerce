@@ -4,22 +4,25 @@ function Cartbtn(props) {
   const [cart, setCart] = useState([]);
 
   const addtoCart = () => {
-    cart.push({ ProductTitle: props.ptitle, ProductPrice: props.price });
-    console.log(cart);
+    const _id = localStorage.getItem("_id");
+    if (!!localStorage.getItem("cart")) {
+      var data = JSON.parse(localStorage.getItem("cart"));
+      setCart(data);
+      cart.push({
+        ProductTitle: props.ptitle,
+        ProductPrice: props.price,
+        _id: _id,
+      });
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+      cart.push({
+        ProductTitle: props.ptitle,
+        ProductPrice: props.price,
+        _id: _id,
+      });
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
   };
-
-  // this._id=localStorage.getItem('_id')
-  // if(!!localStorage.getItem('cart'))
-  // {
-  //     var data=JSON.parse(localStorage.getItem('cart')!)
-  //     this.cart=data
-  //     this.cart.push({'ProductTitle':prodtitle,'ProductPrice':prodprice,'_id':this._id})
-  //     localStorage.setItem('cart',JSON.stringify(this.cart))
-  //     }else{
-  //         this.cart.push({'ProductTitle':prodtitle,'ProductPrice':prodprice,'_id':this._id})
-  //         localStorage.setItem('cart',JSON.stringify(this.cart))
-  //     }
-  // }
 
   return (
     <>
