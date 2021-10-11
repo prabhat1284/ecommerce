@@ -12,6 +12,7 @@ import Cpuser from "./components/user/Cpuser";
 import Cart from "./components/user/Cart";
 import Buy from "./components/user/buy";
 import AddCategory from "./components/admin/addcategory";
+import Addproduct from "./components/admin/addproduct";
 import { Switch, Route } from "react-router-dom";
 
 import { Provider } from "react-redux";
@@ -54,6 +55,9 @@ function Routes() {
       </Route>
       <Route path="/addCategory">
         <AddCategory />
+      </Route>
+      <Route path="/addProduct">
+        <Addproduct />
       </Route>
     </Switch>
   );
