@@ -10,6 +10,7 @@ import Userhome from "./components/user/userhome";
 import Cpadmin from "./components/admin/Cpadmin";
 import Cpuser from "./components/user/Cpuser";
 import Cart from "./components/user/Cart";
+import Buy from "./components/user/buy";
 import AddCategory from "./components/admin/addcategory";
 import { Switch, Route } from "react-router-dom";
 
@@ -28,7 +29,11 @@ function Routes() {
         </Provider>
       </Route>
       <Route path="/register" exact component={Register} />
-      <Route path="/product" exact component={Product} />
+      <Route path="/product">
+        <Provider store={store}>
+          <Product />
+        </Provider>
+      </Route>
       <Route path="/adminhome">
         <Adminhome />
       </Route>
@@ -41,8 +46,11 @@ function Routes() {
       <Route path="/cpuser">
         <Cpuser />
       </Route>
-      <Route path="/Cart">
+      <Route path="/cart">
         <Cart />
+      </Route>
+      <Route path="/buy">
+        <Buy />
       </Route>
       <Route path="/addCategory">
         <AddCategory />

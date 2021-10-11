@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import React, { useState } from "react";
 
 function Cartbtn(props) {
@@ -9,14 +10,16 @@ function Cartbtn(props) {
       var data = JSON.parse(localStorage.getItem("cart"));
       setCart(data);
       cart.push({
-        ProductTitle: props.ptitle,
+        ProductTitle: props.pname,
+        ProductImage: props.prodimg,
         ProductPrice: props.price,
-        _id: _id,
+        _id: props._id,
       });
       localStorage.setItem("cart", JSON.stringify(cart));
     } else {
       cart.push({
-        ProductTitle: props.ptitle,
+        ProductTitle: props.pname,
+        ProductImage: props.prodimg,
         ProductPrice: props.price,
         _id: _id,
       });
@@ -26,7 +29,13 @@ function Cartbtn(props) {
 
   return (
     <>
-      <button type="submit" className="btn btn-default" onClick={addtoCart}>
+      <button
+        type="submit"
+        className="btn btn-default"
+        className="block-example border border-dark"
+        style={{ color: "red" }}
+        onClick={addtoCart}
+      >
         Add To Cart
       </button>
     </>

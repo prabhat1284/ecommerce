@@ -41,7 +41,7 @@ function About() {
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
               <div className="aboutimg">
                 <figure>
-                  <img src="/images/Avangarda_klu.jpg" alt="logo" />
+                  <img src="/images/swing.jpg" alt="logo" />
                 </figure>
               </div>
             </div>

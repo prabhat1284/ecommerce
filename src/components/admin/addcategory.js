@@ -1,34 +1,41 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useState } from "react";
 
-function AddCategory() {
-  const [name, setEnteredname] = useState({
-    name: "",
-  });
+function Category() {
+  const [enteredName, setEnteredName] = useState("");
+  const [categorydetails, setcategorydetails] = useState([]);
 
-  const nameChangeHandler = (e) => {
-    setEnteredname(e.target.value);
+  const nameChangeHandler = (event) => {
+    setEnteredName(event.target.value);
   };
 
-  const categorydata = {
-    name: name,
-  };
+  const submitHandler = async (event) => {
+    const url = "http://localhost:4000/webapiadmin/admincategory";
+    event.preventDefault();
 
-  const category = async (e) => {
-    e.preventDefault();
-    await axios
-      .post("http://localhost:4000/webapiadmin/admincategory", categorydata)
+    const categorydata = {
+      cname: enteredName,
+    };
+    console.log(categorydata);
+    await axios.post(url, categorydata).then((res) => {
+      console.log(res);
+      if (res.data.response === "success") {
+        alert("Category Added Successfully");
+      } else alert("Category Failed To Add. Please Try Again");
+    });
+    setEnteredName("");
+  };
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/webapiadmin/fetchadmincategory")
       .then((res) => {
         console.log(res);
-        if (res.data.response === "success") {
-          alert("Category Added Successfully");
-        } else alert("Category Failed To Add. Please Try Again");
+        setcategorydetails(res.data);
       });
-    setEnteredname("");
-  };
+  }, [setcategorydetails]);
 
   return (
-    <>
+    <div>
       <div className="contactus">
         <div className="container-fluid">
           <div className="row">
@@ -40,31 +47,27 @@ function AddCategory() {
           </div>
         </div>
       </div>
-
       {/* <!-- map --> */}
       <div className="contact">
         <div className="container-fluid padddd">
           <div className="row">
             <div className="col-md-3"></div>
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 padddd">
-              <form className="main_form" onSubmit={category}>
+              <form className="main_form" onSubmit={submitHandler}>
                 <div className="row">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label for="name">Category Name:</label>
                     <input
                       className="form-control"
                       placeholder="Name"
-                      id="name"
-                      name="name"
                       type="text"
+                      name="Category Name"
                       required
-                      value={name}
+                      value={enteredName}
                       onChange={nameChangeHandler}
                     />
                   </div>
-
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <button type="submit" className="send">
+                    <button className="send" type="submit">
                       Submit
                     </button>
                   </div>
@@ -75,8 +78,26 @@ function AddCategory() {
         </div>
       </div>
       {/* <!-- end map --> */}
-    </>
+      <h2>View and Manage Category List</h2>
+      <br />
+      <h4>
+        Sl no.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category
+        Name
+      </h4>
+      {categorydetails.map((s) => (
+        <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+          <div className="product-box"></div>
+          <table className="table" width="100%" height="100%">
+            <tr>
+              <td>{s._id}. </td>
+              <td>{s.cname}</td>
+            </tr>
+          </table>
+        </div>
+      ))}
+    </div>
   );
 }
 
-export default AddCategory;
+export default Category;
