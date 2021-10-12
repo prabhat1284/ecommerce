@@ -12,11 +12,7 @@ import Cpuser from "./components/user/Cpuser";
 import Cart from "./components/user/Cart";
 import Buy from "./components/user/buy";
 import AddCategory from "./components/admin/addcategory";
-import Addproduct from "./components/admin/addproduct";
 import { Switch, Route } from "react-router-dom";
-
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
 
 function Routes() {
   return (
@@ -24,17 +20,9 @@ function Routes() {
       <Route path="/" exact component={Home} />
       <Route path="/about" exact component={About} />
       <Route path="/contact" exact component={Contact} />
-      <Route path="/login">
-        <Provider store={store}>
-          <Login />
-        </Provider>
-      </Route>
+      <Route path="/login" exact component={Login} />
       <Route path="/register" exact component={Register} />
-      <Route path="/product">
-        <Provider store={store}>
-          <Product />
-        </Provider>
-      </Route>
+      <Route path="/product" exact component={Product} />
       <Route path="/adminhome">
         <Adminhome />
       </Route>
@@ -55,9 +43,6 @@ function Routes() {
       </Route>
       <Route path="/addCategory">
         <AddCategory />
-      </Route>
-      <Route path="/addProduct">
-        <Addproduct />
       </Route>
     </Switch>
   );

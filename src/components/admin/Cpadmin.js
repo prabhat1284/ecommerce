@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
+import Home from "../Home";
 
 function Cpadmin() {
+  const { isLoggedInAdmin } = useSelector((state) => state.auth);
+  const { isLoggedInUser } = useSelector((state) => state.auth);
   const [opass, setoldPassword] = useState("");
   const [npass, setnewPassword] = useState("");
   const [cnpass, setcnPassword] = useState("");
@@ -42,67 +46,69 @@ function Cpadmin() {
       });
   };
 
-  return (
-    <>
-      <div className="brand_color">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="titlepage">
-                <h2>Change Password Here</h2>
+  if (isLoggedInAdmin) {
+    return (
+      <>
+        <div className="brand_color">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="titlepage">
+                  <h2>Change Password Here</h2>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <form onSubmit={submitHandler}>
-          {msg}
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control"
-              id="opass"
-              name="opass"
-              placeholder="Password"
-              value={opass}
-              onChange={oldPassChangeHandler}
-            />
-          </div>
+        <div class="container">
+          <form onSubmit={submitHandler}>
+            {msg}
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="opass"
+                name="opass"
+                placeholder="Password"
+                value={opass}
+                onChange={oldPassChangeHandler}
+              />
+            </div>
 
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control"
-              id="npass"
-              name="npass"
-              placeholder="New password"
-              value={npass}
-              onChange={newPassChangeHandler}
-            />
-          </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="npass"
+                name="npass"
+                placeholder="New password"
+                value={npass}
+                onChange={newPassChangeHandler}
+              />
+            </div>
 
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control"
-              id="cnpass"
-              name="cnpass"
-              placeholder="Confirm new Password"
-              value={cnpass}
-              onChange={cdPassChangeHandler}
-            />
-          </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="cnpass"
+                name="cnpass"
+                placeholder="Confirm new Password"
+                value={cnpass}
+                onChange={cdPassChangeHandler}
+              />
+            </div>
 
-          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <button type="submit" className="send">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
-    </>
-  );
+            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <button type="submit" className="send">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </>
+    );
+  } else return <Home />;
 }
 
 export default Cpadmin;

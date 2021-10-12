@@ -14,8 +14,8 @@ function App() {
       <BrowserRouter>
         <Provider store={store}>
           <Header />
-        </Provider>
         <Routes />
+        </Provider>
         <Footer />
       </BrowserRouter>
     </>

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Logoutbtn from "./Logoutbtn";
 
 function UserNavbar() {
+  const username = localStorage.getItem("email");
+  console.log(username);
   return (
     <React.Fragment>
       <header>
@@ -58,8 +60,9 @@ function UserNavbar() {
                   Change Password
                 </Link>
               </div>
-              <Logoutbtn />
+              <Logoutbtn /> &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
+            <font color="white">Welcome User : {username}</font>
           </nav>
         </div>
       </div>
